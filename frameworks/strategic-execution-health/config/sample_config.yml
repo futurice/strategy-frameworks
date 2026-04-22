@@ -1,0 +1,196 @@
+# Strategic Execution Health Framework - Sample Configuration
+# Copy this to config.yml and customize for your organization
+
+# Data Source Configuration
+data_sources:
+  # Slack configuration
+  slack:
+    # Option 1: Use exported Slack data
+    export_path: "data/slack_export/"
+
+    # Option 2: Use Slack API (requires token)
+    # api_token: ${SLACK_TOKEN}  # Set in .env
+    # channels:
+    #   - "general"
+    #   - "engineering"
+    #   - "product"
+    # date_range:
+    #   start: "2024-01-01"
+    #   end: "2024-12-31"
+
+  # Jira/Linear configuration (optional)
+  jira:
+    enabled: false
+    api_url: "https://your-org.atlassian.net"
+    api_token: ${JIRA_API_TOKEN}  # Set in .env
+    project_keys:
+      - "PROJ1"
+      - "PROJ2"
+
+  # Strategy documents
+  strategy_docs:
+    path: "data/strategy/"
+    formats:
+      - "*.pdf"
+      - "*.docx"
+      - "*.md"
+
+# Thread Detection Configuration
+thread_detection:
+  # Time window in minutes to group messages into threads
+  time_window_minutes: 60
+
+  # Minimum messages required to form a thread
+  min_messages: 2
+
+  # Use @mentions to link messages
+  use_mentions: true
+
+  # Topic change detection
+  topic_detection:
+    enabled: true
+    similarity_threshold: 0.7
+
+# Classification Configuration
+classification:
+  # Number of sample threads to label with GPT-4
+  sample_size: 500
+
+  # GPT model for sample labeling
+  gpt_model: "gpt-4"
+  gpt_temperature: 0
+
+  # Local classifier configuration
+  embedding_model: "all-MiniLM-L6-v2"
+  classifier_type: "logistic_regression"  # or "random_forest", "svm"
+
+  # Confidence threshold for local classifier
+  confidence_threshold: 0.7
+
+# Metrics Configuration
+metrics:
+  # Intent Balance
+  intent_balance:
+    # Allow ±5% deviation from target before flagging
+    tolerance_percent: 5
+
+  # Velocity thresholds
+  velocity:
+    response_time:
+      excellent_minutes: 120   # 2 hours
+      good_minutes: 480        # 8 hours
+      poor_minutes: 1440       # 24 hours
+
+    cycle_time:
+      excellent_hours: 168     # 1 week
+      good_hours: 672          # 4 weeks
+      poor_hours: 2016         # 12 weeks
+
+  # Friction thresholds (% of threads with blockers)
+  friction:
+    low_threshold: 15
+    medium_threshold: 30
+    high_threshold: 50
+
+  # Coherence thresholds
+  coherence:
+    high_threshold: 0.8
+    medium_threshold: 0.5
+    low_threshold: 0.3
+
+# Blocker Detection
+blocker_detection:
+  # Keywords to detect blockers
+  keywords:
+    - "blocked"
+    - "blocker"
+    - "stuck"
+    - "waiting on"
+    - "waiting for"
+    - "blocked by"
+    - "can't proceed"
+    - "dependency"
+    - "bottleneck"
+    - "delayed"
+    - "on hold"
+    - "pending"
+
+  # Blocker categories
+  categories:
+    legal:
+      - "legal"
+      - "compliance"
+      - "regulation"
+      - "approval"
+    resource:
+      - "budget"
+      - "headcount"
+      - "resource"
+      - "capacity"
+    decision:
+      - "decision"
+      - "approval"
+      - "waiting on"
+      - "stakeholder"
+    technical:
+      - "bug"
+      - "technical"
+      - "infrastructure"
+      - "outage"
+    dependency:
+      - "depends on"
+      - "dependency"
+      - "waiting for team"
+
+# Sentiment Analysis
+sentiment:
+  enabled: true
+  library: "textblob"  # or "vader", "transformers"
+
+# LLM Configuration (for insights generation)
+llm:
+  enabled: true
+  provider: "openai"  # Options: "openai", "anthropic"
+  api_key: ${OPENAI_API_KEY}  # Set in .env
+  model: "gpt-4"
+  max_tokens: 1000
+  temperature: 0.7
+
+# Output Configuration
+output:
+  # Report formats
+  formats:
+    - "markdown"
+    - "html"
+    # - "pdf"
+
+  # Output paths
+  reports_path: "outputs/reports/"
+  visualizations_path: "outputs/visualizations/"
+  data_path: "outputs/data/"
+
+  # Dashboard settings
+  dashboard:
+    port: 8501
+    theme: "light"  # or "dark"
+
+# Logging
+logging:
+  level: "INFO"  # Options: "DEBUG", "INFO", "WARNING", "ERROR"
+  file: "logs/analysis.log"
+  console: true
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Advanced Options
+advanced:
+  # Enable caching to speed up reruns
+  cache_enabled: true
+  cache_path: "cache/"
+
+  # Parallel processing
+  parallel_processing: false
+  num_workers: 4
+
+  # Data sampling (for testing with subset)
+  sample_data: false
+  sample_fraction: 0.1

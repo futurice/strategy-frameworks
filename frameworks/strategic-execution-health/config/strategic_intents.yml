@@ -1,0 +1,86 @@
+# Strategic Intents Definition
+# Customize these to match your organization's strategic priorities
+
+intents:
+  0:
+    name: "Not Strategically Aligned"
+    description: "Routine operations, bug fixes, maintenance, administrative work"
+    examples:
+      - "Bug fix in production"
+      - "Regular system maintenance"
+      - "Administrative tasks"
+      - "Operational support"
+
+  1:
+    name: "Product Expansion"
+    description: "New features, new product lines, entering new verticals"
+    examples:
+      - "Building new product feature"
+      - "Launching new product line"
+      - "Expanding into new market vertical"
+      - "Product innovation initiatives"
+
+  2:
+    name: "Customer Growth"
+    description: "Sales, marketing, new customer segments, customer acquisition"
+    examples:
+      - "Marketing campaign planning"
+      - "Sales enablement"
+      - "Customer acquisition strategy"
+      - "New customer segment targeting"
+
+  3:
+    name: "Platform Modernization"
+    description: "Unified platform development, technical architecture, system consolidation"
+    examples:
+      - "Building unified API platform"
+      - "Architecture modernization"
+      - "System integration"
+      - "Platform migration"
+
+  4:
+    name: "Business Model Innovation"
+    description: "Pricing changes, monetization strategy, cross-sell/upsell initiatives"
+    examples:
+      - "New pricing model"
+      - "Upsell strategy"
+      - "Monetization experiments"
+      - "Revenue model changes"
+
+  5:
+    name: "Technical Foundation"
+    description: "Infrastructure, DevOps, technical debt reduction, tooling improvements"
+    examples:
+      - "Infrastructure improvements"
+      - "CI/CD pipeline enhancements"
+      - "Technical debt reduction"
+      - "Developer tooling"
+
+# Target Allocation (must sum to 100%)
+# This defines how you WANT work to be distributed
+targets:
+  1: 25  # Product Expansion: 25%
+  2: 20  # Customer Growth: 20%
+  3: 20  # Platform Modernization: 20%
+  4: 15  # Business Model Innovation: 15%
+  5: 20  # Technical Foundation: 20%
+  # Note: Intent 0 (Not Aligned) has no target - minimize this
+
+# Intent Classification Instructions
+# These instructions help the AI classify conversations accurately
+classification_instructions: |
+  When classifying a conversation thread, consider:
+
+  1. Main topic: What is the primary focus of the discussion?
+  2. Outcome: What is the team trying to achieve?
+  3. Strategic alignment: Does this advance a specific strategic priority?
+
+  If a thread discusses multiple intents, choose the primary/dominant one.
+  If a thread is purely operational (bug fixes, routine work), classify as Intent 0.
+
+  Use context clues:
+  - Product-related keywords → Intent 1
+  - Sales/marketing keywords → Intent 2
+  - Platform/architecture keywords → Intent 3
+  - Pricing/monetization keywords → Intent 4
+  - Infrastructure/DevOps keywords → Intent 5
