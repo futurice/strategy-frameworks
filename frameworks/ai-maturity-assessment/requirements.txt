@@ -1,0 +1,43 @@
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+python-dotenv>=1.0.0
+
+# Data collection
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# NLP and classification
+scikit-learn>=1.3.0
+nltk>=3.8.0
+# spacy>=3.6.0  # Optional: for advanced NLP
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# Optional: Job board APIs
+# linkedin-api>=2.0.0
+# snowflake-connector-python>=3.0.0
+
+# Optional: LLM for insights
+# openai>=1.0.0
+
+# Optional: Dashboard
+# streamlit>=1.28.0
+
+# Date/time handling
+python-dateutil>=2.8.2
+
+# YAML configuration
+pyyaml>=6.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code quality
+black>=23.0.0
+flake8>=6.0.0
