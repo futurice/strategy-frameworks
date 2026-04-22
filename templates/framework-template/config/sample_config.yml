@@ -1,0 +1,68 @@
+# Sample Configuration File
+# Copy this to config.yml and customize for your organization
+
+# Data Sources
+data_sources:
+  # Example API source
+  api_source:
+    endpoint: "https://api.example.com"
+    api_key: "YOUR_API_KEY_HERE"  # Store in .env instead
+    timeout: 30
+
+  # Example file source
+  file_source:
+    path: "data/input/"
+    format: "csv"
+
+# Framework Dimensions/Metrics
+metrics:
+  dimension1:
+    name: "Dimension 1 Name"
+    weight: 0.25
+    threshold_high: 0.8
+    threshold_medium: 0.5
+    threshold_low: 0.3
+
+  dimension2:
+    name: "Dimension 2 Name"
+    weight: 0.25
+    threshold_high: 0.8
+    threshold_medium: 0.5
+    threshold_low: 0.3
+
+  dimension3:
+    name: "Dimension 3 Name"
+    weight: 0.25
+    threshold_high: 0.8
+    threshold_medium: 0.5
+    threshold_low: 0.3
+
+  dimension4:
+    name: "Dimension 4 Name"
+    weight: 0.25
+    threshold_high: 0.8
+    threshold_medium: 0.5
+    threshold_low: 0.3
+
+# Organization-specific settings
+organization:
+  name: "Your Organization"
+  timezone: "UTC"
+
+# Processing options
+processing:
+  batch_size: 100
+  parallel_processing: true
+  cache_enabled: true
+  cache_ttl: 3600  # seconds
+
+# Output settings
+output:
+  reports_path: "outputs/reports/"
+  visualizations_path: "outputs/visualizations/"
+  format: "html"  # or "pdf", "json"
+
+# Logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "logs/framework.log"

@@ -1,0 +1,29 @@
+# Core dependencies
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Data processing
+python-dotenv>=1.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# API/Data sources (examples - customize as needed)
+# requests>=2.31.0
+# slack-sdk>=3.21.0
+
+# ML/AI (if applicable)
+# openai>=1.0.0
+# scikit-learn>=1.3.0
+
+# Dashboard (if applicable)
+# streamlit>=1.28.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code quality
+black>=23.0.0
+flake8>=6.0.0
